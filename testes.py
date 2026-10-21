@@ -27,25 +27,25 @@ def teste_ula_aritmetica():
     cpu = CPU()
     cpu.memoria[0] = "LOAD R0, 15"
     cpu.memoria[1] = "LOAD R1, 5"
-    cpu.memoria[2] = "ADD R0, R1"  # R0 = 20
-    cpu.memoria[3] = "SUB R1, R0"  # R1 = 5 - 20 (Tratado em 8 bits)
+    cpu.memoria[2] = "ADD R0, R1"  
+    cpu.memoria[3] = "SUB R1, R0"  
     cpu.memoria[4] = "HALT"
     cpu.executar()
 
     assert cpu.registradores["R0"] == 20
-    # Em 8 bits: (5 - 20) & 0xFF = -15 & 0xFF = 241
+   
     assert cpu.registradores["R1"] == 241
     print("[OK] ULA (ADD e SUB)")
 
 
 def teste_ula_logica():
     cpu = CPU()
-    cpu.memoria[0] = "LOAD R0, 12" # 0000 1100 em binário
-    cpu.memoria[1] = "LOAD R1, 5"  # 0000 0101 em binário
-    cpu.memoria[2] = "AND R0, R1"  # 12 AND 5 = 4
-    cpu.memoria[3] = "LOAD R2, 10" # 0000 1010 em binário
-    cpu.memoria[4] = "OR R2, R1"   # 10 OR 5 = 15
-    cpu.memoria[5] = "XOR R1, R1"  # 5 XOR 5 = 0
+    cpu.memoria[0] = "LOAD R0, 12" 
+    cpu.memoria[1] = "LOAD R1, 5"  
+    cpu.memoria[2] = "AND R0, R1"  
+    cpu.memoria[3] = "LOAD R2, 10" 
+    cpu.memoria[4] = "OR R2, R1"   
+    cpu.memoria[5] = "XOR R1, R1"  
     cpu.memoria[6] = "HALT"
     cpu.executar()
 
@@ -80,7 +80,7 @@ def teste_halt():
 
 
 def teste_programa_exemplo():
-    # Executa o programa sugerido no enunciado (5 + 8 = 13 em MEM[15])
+    
     cpu = CPU()
     cpu.memoria[0] = "LOAD R0, 5"
     cpu.memoria[1] = "LOAD R1, 8"
@@ -94,11 +94,11 @@ def teste_programa_exemplo():
 
 
 def teste_limite_8bits():
-    # Testa o estouro de representação de 8 bits (> 255)
+    
     cpu = CPU()
     cpu.memoria[0] = "LOAD R0, 200"
     cpu.memoria[1] = "LOAD R1, 100"
-    cpu.memoria[2] = "ADD R0, R1" # (200 + 100) & 0xFF = 300 & 255 = 44
+    cpu.memoria[2] = "ADD R0, R1" 
     cpu.memoria[3] = "HALT"
     cpu.executar()
 
