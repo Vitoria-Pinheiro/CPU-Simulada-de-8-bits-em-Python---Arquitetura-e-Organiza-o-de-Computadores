@@ -12,18 +12,18 @@ class CPU:
             "R3": 0
         }
 
-        # 16 posições de memória
+        
         self.memoria = [0] * 16
 
-        # Program Counter
+      
         self.pc = 0
 
-        # Estado da CPU
+        
         self.halted = False
 
     def executar_instrucao(self, instrucao):
 
-        # Tratamento para posições de memória vazias ou zeradas
+       
         if not instrucao or instrucao == 0:
             self.pc += 1
             return
@@ -34,8 +34,7 @@ class CPU:
         # ==============================================
         # LOAD — IMPLEMENTADO
         # ==============================================
-        # LOAD R0, 5
-        # R0 <- 5
+       
         if operacao == "LOAD":
             registrador = partes[1]
             valor = int(partes[2])
@@ -46,8 +45,7 @@ class CPU:
         # ==============================================
         # STORE — IMPLEMENTADO
         # ==============================================
-        # STORE R0, 15
-        # MEM[15] <- R0
+        
         elif operacao == "STORE":
             registrador = partes[1]
             endereco = int(partes[2])
@@ -61,7 +59,7 @@ class CPU:
         # ==============================================
         # ADD, SUB, AND, OR, XOR — IMPLEMENTADOS VIA ULA
         # ==============================================
-        # Exemplo: ADD R0, R1 -> R0 <- R0 + R1
+        
         elif operacao in ["ADD", "SUB", "AND", "OR", "XOR"]:
             reg_dest = partes[1]
             reg_src = partes[2]
@@ -69,7 +67,7 @@ class CPU:
             val_a = self.registradores[reg_dest]
             val_b = self.registradores[reg_src]
 
-            # Chama a função ula importada
+            
             resultado = ula(operacao, val_a, val_b)
 
             self.registradores[reg_dest] = resultado
@@ -78,8 +76,7 @@ class CPU:
         # ==============================================
         # JMP — IMPLEMENTADO
         # ==============================================
-        # JMP 8
-        # PC <- 8
+        
         elif operacao == "JMP":
             endereco = int(partes[1])
 
