@@ -1,9 +1,4 @@
-"""
-ULA — Código-base para o projeto de CPU Simulada
-AOC 2026.2
 
-Os alunos devem implementar as operações marcadas como IMPLEMENTAR.
-"""
 
 def limitar_8bits(valor):
     return valor & 0xFF
